@@ -1,0 +1,67 @@
+$line-color: #4a69bd;
+$line-color2: #6a89cc;
+$box-color: #6a89cc;
+
+.line {
+    position: absolute;
+    border-radius: 2px;
+    width: 6px;
+    background: $line-color;
+    background: -moz-linear-gradient(180deg, $line-color 0%, $line-color 74%, transparent 100%);
+    background: -webkit-linear-gradient(180deg, $line-color 0%, $line-color 74%, transparent 100%);
+    background: linear-gradient(180deg, $line-color 0%, $line-color 74%, transparent 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7a7a7a",endColorstr="#f9f9f9",GradientType=1);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 100vw;
+    margin: 0 auto;
+}
+
+.container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.bubble {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: $line-color;
+    border: 4px solid $line-color2;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+
+    &.left {
+        right: -13px;
+        left: unset;
+    }
+    &.right {
+        left: -12px;
+    }
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    left: 50%;
+}
+
+.content {
+    padding: 20px 30px;
+    background-color: $box-color;
+    position: relative;
+    border-radius: 6px;
+}
