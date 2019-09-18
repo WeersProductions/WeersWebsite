@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as titleStyles from "./container.module.scss"
+import * as titleStyles from "./Container.module.scss"
 
 export default class Container extends React.Component<{}, {}> {
   public render() {
