@@ -16,12 +16,15 @@ export default class TimelineItem extends React.Component<timelineItemProps, {}>
         orientation =  timelineStyles.right;
     }
     return (
-        <div className={[timelineStyles.container, orientation].join(" ")}>
-            <div className={[timelineStyles.bubble, orientation].join(" ")}/>
-            <div className={timelineStyles.content}>
-                <h2>{this.props.date.toDateString()}</h2>
-                <p>{this.props.text}</p>
-                {this.props.children}
+        <div>
+            <div className={[timelineStyles.container, orientation].join(" ")}>
+            <div className={[timelineStyles.arrow, orientation].join(" ")}/>
+                <div className={[timelineStyles.bubble, orientation].join(" ")}/>
+                <div className={timelineStyles.content}>
+                    <h2>{this.props.date.toDateString()}</h2>
+                    <p>{this.props.text}</p>
+                    {this.props.children}
+                </div>
             </div>
         </div>
     )

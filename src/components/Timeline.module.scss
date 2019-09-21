@@ -52,11 +52,32 @@ $box-color: #6a89cc;
 }
 
 .left {
-    left: 0;
+    // left: 0;
 }
 
 .right {
     left: 50%;
+}
+
+.arrow {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 18px;
+    width: 0;
+    z-index: 1;
+    border: medium solid $box-color;
+
+    &.left {
+        right: 10px;
+        border-width: 10px 0 10px 30px;
+        border-color: transparent transparent transparent $box-color;
+    }
+    &.right {
+        left: 10px;
+        border-width: 10px 30px 10px 0;
+        border-color: transparent $box-color transparent transparent;
+    }
 }
 
 .content {
@@ -64,4 +85,9 @@ $box-color: #6a89cc;
     background-color: $box-color;
     position: relative;
     border-radius: 6px;
+
+    &:hover {
+        transform: scale(1.2,1.2,1.2);
+        background: blue;
+    }
 }
