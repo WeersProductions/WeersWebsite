@@ -1,6 +1,9 @@
 $line-color: #4a69bd;
 $line-color2: #6a89cc;
 $box-color: #6a89cc;
+$small-screen: "screen and (max-width: 600px)";
+$big-screen: "screen and (min-width: 600px)";
+$timeline-gap: 30px;
 
 .line {
     position: absolute;
@@ -15,6 +18,10 @@ $box-color: #6a89cc;
     bottom: 0;
     left: 50%;
     margin-left: -3px;
+
+    @media #{$small-screen} {
+        left: 37px;
+    }
 }
 
 .timeline {
@@ -27,7 +34,13 @@ $box-color: #6a89cc;
     padding: 10px 40px;
     position: relative;
     background-color: inherit;
-    width: 50%;
+    width: 40vw;
+
+    @media #{$small-screen} {
+        width: 85vw;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
 }
 
 .bubble {
@@ -45,18 +58,38 @@ $box-color: #6a89cc;
     &.left {
         right: -13px;
         left: unset;
+
+        @media #{$small-screen} {
+            left: 25px;
+            right: unset;
+        }
     }
     &.right {
         left: -12px;
+
+        @media #{$small-screen} {
+            left: 25px;
+        }
+    }
+
+    @media #{$small-screen} {
+        left: 15px;
+        right: unset;
     }
 }
 
 .left {
-    // left: 0;
+    @media #{$big-screen} {
+        // right: 15vw;
+    }
 }
 
 .right {
     left: 50%;
+
+    @media #{$small-screen} {
+        left: 0%;
+    }
 }
 
 .arrow {
@@ -68,15 +101,23 @@ $box-color: #6a89cc;
     z-index: 1;
     border: medium solid $box-color;
 
-    &.left {
-        right: 10px;
-        border-width: 10px 0 10px 30px;
-        border-color: transparent transparent transparent $box-color;
-    }
-    &.right {
-        left: 10px;
-        border-width: 10px 30px 10px 0;
+    @media #{$small-screen} {
+        left: 40px;
+        border: medium solid $box-color;
+        border-width: 10px $timeline-gap 10px 0;
         border-color: transparent $box-color transparent transparent;
+    }
+    @media #{$big-screen} {
+        &.left {
+            right: 10px;
+            border-width: 10px 0 10px $timeline-gap;
+            border-color: transparent transparent transparent $box-color;
+        }
+        &.right {
+            left: 10px;
+            border-width: 10px $timeline-gap 10px 0;
+            border-color: transparent $box-color transparent transparent;
+        }
     }
 }
 
