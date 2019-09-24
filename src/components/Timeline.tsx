@@ -3,12 +3,21 @@ import * as timelineStyles from "./Timeline.module.scss"
 import TimelineItem from "./TimelineItem"
 import {motion, Variants} from "framer-motion";
 
-const variants: Variants = {
+const childrenSequenceVariant: Variants = {
   active: {
     transition: { staggerChildren: 0.07, delayChildren: 0.2 }
   },
   disabled: {
     transition: { staggerChildren: 0.05, staggerDirection: -1 }
+  }
+}
+
+const timelineVariant: Variants = {
+  active: {
+    scaleY: 1
+  },
+  disabled: {
+    scaleY: 0
   }
 }
 
@@ -40,8 +49,8 @@ export default class Container extends React.Component<{}, {}> {
     var itemsHtml = items.map(generateItem);
 
     return (
-        <motion.div initial="disabled" animate="active" variants={variants} className={timelineStyles.timeline}>
-            <div className={timelineStyles.line}/>
+        <motion.div initial="disabled" animate="active" variants={childrenSequenceVariant} className={timelineStyles.timeline}>
+            <motion.div variants={timelineVariant} className={timelineStyles.line}/>
             {itemsHtml}
         </motion.div>
     );
