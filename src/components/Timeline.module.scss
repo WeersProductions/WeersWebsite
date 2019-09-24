@@ -40,6 +40,14 @@ $timeline-gap: 30px;
         padding-left: 70px;
         padding-right: 25px;
     }
+
+    &:hover .content {
+        background: blue;
+    }
+    &:hover .arrow {
+        border-right-color: blue;
+        border-left-color: blue;
+    }
 }
 
 .bubble {
@@ -125,9 +133,4 @@ $timeline-gap: 30px;
     background-color: $box-color;
     position: relative;
     border-radius: 6px;
-
-    &:hover {
-        transform: scale(1.2,1.2,1.2);
-        background: blue;
-    }
 }
