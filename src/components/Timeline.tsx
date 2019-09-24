@@ -1,6 +1,16 @@
 import * as React from 'react'
 import * as timelineStyles from "./Timeline.module.scss"
 import TimelineItem from "./TimelineItem"
+import {motion, Variants} from "framer-motion";
+
+const variants: Variants = {
+  active: {
+    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+  },
+  disabled: {
+    transition: { staggerChildren: 0.05, staggerDirection: -1 }
+  }
+}
 
 export default class Container extends React.Component<{}, {}> {
   public render() {
@@ -30,10 +40,10 @@ export default class Container extends React.Component<{}, {}> {
     var itemsHtml = items.map(generateItem);
 
     return (
-        <div className={timelineStyles.timeline}>
+        <motion.div initial="disabled" animate="active" variants={variants} className={timelineStyles.timeline}>
             <div className={timelineStyles.line}/>
             {itemsHtml}
-        </div>
+        </motion.div>
     );
   }
 }
