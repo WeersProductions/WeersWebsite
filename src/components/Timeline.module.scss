@@ -34,11 +34,13 @@ $timeline-gap: 30px;
     position: relative;
     background-color: inherit;
     width: 40vw;
+    transform-origin: 0px center;
 
     @media #{$small-screen} {
         width: 85vw;
         padding-left: 70px;
         padding-right: 25px;
+        transform-origin: 25px center;
     }
 
     &:hover .content {
@@ -88,6 +90,7 @@ $timeline-gap: 30px;
 .left {
     @media #{$big-screen} {
         // right: 15vw;
+        transform-origin: right center;
     }
 }
 
@@ -133,4 +136,11 @@ $timeline-gap: 30px;
     background-color: $box-color;
     position: relative;
     border-radius: 6px;
+}
+
+.animationContainer {
+    transform-origin: 50% center;
+    @media #{$small-screen} {
+        transform-origin: 25px center;
+    }
 }

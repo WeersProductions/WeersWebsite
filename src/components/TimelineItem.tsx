@@ -13,14 +13,15 @@ interface timelineItemProps extends itemData {
 }
 
 const variants: Variants = {
-    active: {scale: 1, y: 0, opacity: 1, transition: {
-        staggerChildren: 0.5,
-        delayChildren: 0.5
-    }},
-    disabled: {scale: 0, y: 50, opacity: 0, transition: {
-        staggerChildren: 0.5,
-        delayChildren: 0.5
-    }}
+    active: {
+        scale: 1, y: 0, opacity: 1
+    },
+    disabled: {
+        scale: 0, y: 50, opacity: 0
+    },
+    hover: {
+        scale: 1.1
+    }
 }
 
 export class TimelineItem extends React.Component<timelineItemProps, {}> {
@@ -36,15 +37,13 @@ export class TimelineItem extends React.Component<timelineItemProps, {}> {
         dateOptions = {...dateOptions, day:'numeric'};
     }
     return (
-        <motion.div variants={variants}>
-            <div className={[timelineStyles.container, orientation].join(" ")}>
+        <motion.div className={[timelineStyles.container, orientation].join(" ")} whileHover="hover" variants={variants}>
             <div className={[timelineStyles.arrow, orientation].join(" ")}/>
-                <div className={[timelineStyles.bubble, orientation].join(" ")}/>
-                <div className={timelineStyles.content}>
-                    <h2>{this.props.date.toLocaleDateString("en-US", dateOptions)}</h2>
-                    <p>{this.props.text}</p>
-                    {this.props.children}
-                </div>
+            <div className={[timelineStyles.bubble, orientation].join(" ")}/>
+            <div className={timelineStyles.content}>
+                <h2>{this.props.date.toLocaleDateString("en-US", dateOptions)}</h2>
+                <p>{this.props.text}</p>
+                {this.props.children}
             </div>
         </motion.div>
     )
