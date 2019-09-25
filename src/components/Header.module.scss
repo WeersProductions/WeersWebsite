@@ -4,6 +4,7 @@
     width: 50vw;
     margin: auto;
     display: flex;
+    align-items: center;
 
     @media #{$small-screen} {
         flex-direction: column;

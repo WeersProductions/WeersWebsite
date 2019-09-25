@@ -43,13 +43,13 @@ $timeline-gap: 30px;
         transform-origin: 38px 25px;
     }
 
-    &:hover .content {
-        background: blue;
-    }
-    &:hover .arrow {
-        border-right-color: blue;
-        border-left-color: blue;
-    }
+    // &:hover .content {
+    //     background: #4a69bd;
+    // }
+    // &:hover .arrow {
+    //     border-right-color: #4a69bd;
+    //     border-left-color: #4a69bd;
+    // }
 
     &.left {
         @media #{$big-screen} {
@@ -106,6 +106,7 @@ $timeline-gap: 30px;
     width: 0;
     z-index: 1;
     border: medium solid $box-color;
+    cursor: pointer;
 
     @media #{$small-screen} {
         left: 40px;
@@ -132,6 +133,7 @@ $timeline-gap: 30px;
     background-color: $box-color;
     position: relative;
     border-radius: 6px;
+    cursor: pointer;
 }
 
 .animationContainer {
