@@ -34,13 +34,13 @@ $timeline-gap: 30px;
     position: relative;
     background-color: inherit;
     width: 40vw;
-    transform-origin: 0px center;
+    transform-origin: 0px 25px;
 
     @media #{$small-screen} {
         width: 85vw;
         padding-left: 70px;
         padding-right: 25px;
-        transform-origin: 25px center;
+        transform-origin: 38px 25px;
     }
 
     &:hover .content {
@@ -50,6 +50,18 @@ $timeline-gap: 30px;
         border-right-color: blue;
         border-left-color: blue;
     }
+
+    &.left {
+        @media #{$big-screen} {
+            transform-origin: right 27px;
+        }
+    }
+    &.right {
+        left: 50%;
+        @media #{$small-screen} {
+            left: 0%;
+        }
+    }
 }
 
 .bubble {
@@ -57,7 +69,6 @@ $timeline-gap: 30px;
     position: absolute;
     width: 25px;
     height: 25px;
-    right: -17px;
     background-color: $line-color;
     border: 4px solid $line-color2;
     top: 15px;
@@ -84,21 +95,6 @@ $timeline-gap: 30px;
     @media #{$small-screen} {
         left: 15px;
         right: unset;
-    }
-}
-
-.left {
-    @media #{$big-screen} {
-        // right: 15vw;
-        transform-origin: right center;
-    }
-}
-
-.right {
-    left: 50%;
-
-    @media #{$small-screen} {
-        left: 0%;
     }
 }
 
