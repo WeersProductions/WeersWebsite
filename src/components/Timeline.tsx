@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as timelineStyles from "./Timeline.module.scss"
-import TimelineItem from "./TimelineItem"
+import {itemData, TimelineItem} from "./TimelineItem"
 import {motion, Variants} from "framer-motion";
 
 const childrenSequenceVariant: Variants = {
@@ -21,19 +21,22 @@ const timelineVariant: Variants = {
   }
 }
 
-export default class Container extends React.Component<{}, {}> {
+export interface timelineProps {
+  items: itemData[];
+}
+
+interface timelineState {
+  items: itemData[];
+}
+
+export class Timeline extends React.Component<timelineProps, timelineState> {
+  constructor(props: timelineProps) {
+    super(props);
+    this.state = {items: this.props.items.sort((a,b)=>a.date.getTime()-b.date.getTime())};
+  }
+
   public render() {
-    const items = [
-      {text:'Hiiiii!', date:new Date(2021, 12, 23)},
-      {text:'Hi!', date:new Date(2017, 5, 21)},
-      {text: 'asdfadsf', date:new Date(2018, 5, 21)},
-      {text: 'A very long text, that is very cool!', date:new Date(2019, 5, 5)},
-      {text: 'The future', date:new Date(2020, 4, 4)}
-    ];
-
-    items.sort((a,b)=>a.date.getTime()-b.date.getTime());
-
-    function generateItem(item : {text: string, date: Date}, index : number) {
+    function generateItem(item : itemData, index : number) {
         var orientation : 'left' | 'right' = 'left';
         if (index % 2 == 0) {
             orientation = 'right';
@@ -42,11 +45,10 @@ export default class Container extends React.Component<{}, {}> {
           <TimelineItem
             key={index.toString()}
             orientation={orientation}
-            text={item.text}
-            date={item.date}>
+            {...item}>
           </TimelineItem>);
     }
-    var itemsHtml = items.map(generateItem);
+    var itemsHtml = this.state.items.map(generateItem);
 
     return (
         <motion.div initial="disabled" animate="active" variants={childrenSequenceVariant} className={timelineStyles.timeline}>

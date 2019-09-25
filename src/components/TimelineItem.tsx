@@ -2,10 +2,14 @@ import * as React from 'react'
 import * as timelineStyles from "./Timeline.module.scss"
 import {motion, Variants} from "framer-motion";
 
-type timelineItemProps = {
+export interface itemData {
+    date: Date,
+    showDay?: boolean
+    text: string,
+}
+
+interface timelineItemProps extends itemData {
     orientation : 'left' | 'right',
-    date : Date,
-    text: string
 }
 
 const variants: Variants = {
@@ -19,13 +23,17 @@ const variants: Variants = {
     }}
 }
 
-export default class TimelineItem extends React.Component<timelineItemProps, {}> {
+export class TimelineItem extends React.Component<timelineItemProps, {}> {
   public render() {
     var orientation;
-    if(this.props.orientation=='left') {
+    if(this.props.orientation===undefined || this.props.orientation=='left') {
         orientation = timelineStyles.left;
     } else if(this.props.orientation=='right') {
         orientation =  timelineStyles.right;
+    }
+    var dateOptions : Intl.DateTimeFormatOptions = {year: 'numeric', month: 'long'};
+    if (this.props.showDay) {
+        dateOptions = {...dateOptions, day:'numeric'};
     }
     return (
         <motion.div variants={variants}>
@@ -33,7 +41,7 @@ export default class TimelineItem extends React.Component<timelineItemProps, {}>
             <div className={[timelineStyles.arrow, orientation].join(" ")}/>
                 <div className={[timelineStyles.bubble, orientation].join(" ")}/>
                 <div className={timelineStyles.content}>
-                    <h2>{this.props.date.toDateString()}</h2>
+                    <h2>{this.props.date.toLocaleDateString("en-US", dateOptions)}</h2>
                     <p>{this.props.text}</p>
                     {this.props.children}
                 </div>
