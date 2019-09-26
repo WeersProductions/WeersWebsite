@@ -19,11 +19,11 @@ const tlProps : timelineProps = {items: [
     usedList: {
       items: [
         {
-          icon: null,
+          icon: <img src="static/images/icons/unity.svg"/>,
           name: "Unity"
         },
         {
-          icon: null,
+          icon: <img src="static/images/icons/react.svg"/>,
           name: "React"
         },
         {

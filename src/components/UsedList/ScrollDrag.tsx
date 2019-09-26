@@ -23,7 +23,11 @@ export class ScrollDrag extends React.Component<ScrollDragProps, ScrollDragState
     window.addEventListener('mouseup', this.onMouseUp);
   };
 
-  onMouseUp = () => {
+  onMouseUp = (e:any) => {
+    if(this.state.isScrolling) {
+      console.log("todo: prevent click on icon.");
+      e.preventDefault();
+    }
     this.setState({ ...this.state, isScrolling: false });
     window.removeEventListener('mouseup', this.onMouseUp);
   };

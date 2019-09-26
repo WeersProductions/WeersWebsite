@@ -6,12 +6,26 @@ export interface UsedItemProps {
   name: string
 }
 
-export class UsedItem extends React.Component<UsedItemProps, {}> {
+export interface UsedItemState {
+  expanded: boolean
+}
+
+export class UsedItem extends React.Component<UsedItemProps, UsedItemState> {
   constructor(props: UsedItemProps) {
-    super(props)
+    super(props);
+    this.state = {expanded: false};
+  }
+
+  switchExpand = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    this.setState({expanded: !this.state.expanded});
   }
 
   public render() {
-    return <div>{this.props.name}</div>
+    return (
+      <div onClick={this.switchExpand} className={usedListStyles.item}>
+        <div className={usedListStyles.icon}>{this.props.icon}</div>
+        {this.state.expanded ? <div className={usedListStyles.text}>{this.props.name}</div> : undefined}
+      </div>
+    )
   }
 }
