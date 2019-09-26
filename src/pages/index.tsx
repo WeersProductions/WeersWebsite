@@ -15,7 +15,43 @@ const tlProps : timelineProps = {items: [
   },
   {
     text: "Hi!",
-    date: new Date(2017, 5, 21)
+    date: new Date(2017, 5, 21),
+    usedList: {
+      items: [
+        {
+          icon: null,
+          name: "Unity"
+        },
+        {
+          icon: null,
+          name: "React"
+        },
+        {
+          icon: null,
+          name: "Unity"
+        },
+        {
+          icon: null,
+          name: "React"
+        },
+        {
+          icon: null,
+          name: "Unity"
+        },
+        {
+          icon: null,
+          name: "React"
+        },
+        {
+          icon: null,
+          name: "Unity"
+        },
+        {
+          icon: null,
+          name: "React"
+        }
+      ]
+    }
   },
   {
     text: "asdfadsf",
