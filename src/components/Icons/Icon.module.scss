@@ -8,6 +8,10 @@
   flex-direction: row;
   align-items: center;
   text-align: center;
+  cursor: pointer;
+  -webkit-transform:translateZ(0px);
+  -moz-transform:translateZ(0px);
+  transform:translateZ(0px);
 
   .icon {
     svg {
