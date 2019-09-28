@@ -8,25 +8,3 @@
     overflow: hidden;
     height: auto;
 }
-
-.item {
-    border-right-width: 1px;
-    border-right-style: solid;
-    margin:  0.5rem;
-    margin-right: 0;
-    padding-right: 0.5rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: center;
-}
-
-.icon {
-    img {
-        height: 40px;
-    }
-}
-
-.text {
-    margin-left: 0.5rem;
-}
