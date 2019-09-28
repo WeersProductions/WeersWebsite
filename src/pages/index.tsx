@@ -4,6 +4,8 @@ import Container from "../components/container"
 
 import {timelineProps, Timeline} from "../components/timeline"
 import Header from "../components/Header"
+import IconPython from "../components/Icons/IconPython"
+import IconReact from "../components/Icons/IconReact"
 
 interface IndexPageProps { }
 
@@ -17,40 +19,8 @@ const tlProps : timelineProps = {items: [
     text: "Hi!",
     date: new Date(2017, 5, 21),
     usedList: {
-      items: [
-        {
-          icon: <img src="static/images/icons/unity.svg"/>,
-          name: "Unity"
-        },
-        {
-          icon: <img src="static/images/icons/react.svg"/>,
-          name: "React"
-        },
-        {
-          icon: null,
-          name: "Unity"
-        },
-        {
-          icon: null,
-          name: "React"
-        },
-        {
-          icon: null,
-          name: "Unity"
-        },
-        {
-          icon: null,
-          name: "React"
-        },
-        {
-          icon: null,
-          name: "Unity"
-        },
-        {
-          icon: null,
-          name: "React"
-        }
-      ]
+      items:
+        [<IconPython key="Python"/>, <IconReact key="React"/>]
     }
   },
   {

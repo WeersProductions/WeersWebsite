@@ -1,10 +1,12 @@
 import React, {useRef} from 'react'
 import * as usedListStyles from "./UsedList.module.scss"
-import {UsedItem, UsedItemProps} from "./UsedItem";
 import {ScrollDrag} from "./ScrollDrag";
+import Icon from '../Icons/Icon';
+import IconPython from '../Icons/IconPython';
+import IconReact from '../Icons/IconReact';
 
 export interface UsedListProps {
-  items: UsedItemProps[];
+  items: JSX.Element[];
 }
 
 export class UsedList extends React.Component<UsedListProps, {}> {
@@ -13,14 +15,10 @@ export class UsedList extends React.Component<UsedListProps, {}> {
   }
 
   public render() {
-    const items = this.props.items.map((value,id ) => {
-      return (<UsedItem {...value} key={id}/>);
-    });
-
     return (
       <ScrollDrag className={usedListStyles.viewPort}>
         <div className={usedListStyles.container}>
-          {items}
+          {this.props.items}
         </div>
       </ScrollDrag>
     )
