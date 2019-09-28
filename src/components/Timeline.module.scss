@@ -133,7 +133,56 @@ $timeline-gap: 30px;
     background-color: $box-color;
     position: relative;
     border-radius: 6px;
-    cursor: pointer;
+
+    .title {
+        font-weight: bold;
+    }
+
+    .divider {
+        width: auto;
+        height: 1px;
+        background: $line-color;
+        border-radius: 1px;
+        margin: 0;
+        margin-top: -0.75rem;
+    }
+
+    .extraInfo {
+        margin-left: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        .icon {
+            width: 1.2rem;
+            height: auto;
+            margin-right: 0.5rem;
+        }
+
+        .infoContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+    }
+
+    .date{
+        display: flex;
+        align-items: baseline;
+        .startDate {
+            margin: 0;
+        }
+        .endDateContainer {
+            display: flex;
+            align-items: baseline;
+            .splitter {
+                margin: 0.5rem;
+            }
+            .endDate {
+                margin: 0;
+            }
+        }
+    }
 }
 
 .animationContainer {

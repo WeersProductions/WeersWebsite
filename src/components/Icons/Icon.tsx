@@ -9,12 +9,6 @@ export interface IconState {
   expanded: boolean;
 }
 
-const layoutTransition = {
-  type: "spring",
-  damping: 12,
-  stiffness: 100
-}
-
 const textVariants: Variants = {
   visible: {
     width: 'auto',
@@ -48,9 +42,7 @@ export default class Icon extends React.Component<IconProps, IconState> {
     const animationState:string = this.state.expanded ? "visible" : "hidden";
     return <div onClick={this.switchExpand} className={IconStyles.container + " " + this.name}>
         <div className={IconStyles.icon}>{this.IconSVG}</div>
-        <div >
-          <motion.div variants={textVariants} initial="hidden" animate={animationState} className={IconStyles.text}>{this.name}</motion.div>
-        </div>
+        <motion.div variants={textVariants} initial="hidden" animate={animationState} className={IconStyles.text}>{this.name}</motion.div>
       </div>
   }
 }

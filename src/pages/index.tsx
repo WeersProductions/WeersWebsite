@@ -6,34 +6,44 @@ import {timelineProps, Timeline} from "../components/timeline"
 import Header from "../components/Header"
 import IconPython from "../components/Icons/IconPython"
 import IconReact from "../components/Icons/IconReact"
+import IconJava from "../components/Icons/IconJava"
 
 interface IndexPageProps { }
 
 const tlProps : timelineProps = {items: [
   {
-    text: "Hiiiii!",
-    date: new Date(2021, 11, 23),
-    showDay: true
+    title: "Junior developer",
+    text: "I wrote software that automatically generates test reports based on the selected machine component. Engineers will enter their test results and the measurements will be checked on correctness.",
+    startDate: new Date(2016, 5, 0),
+    endDate: new Date(2016, 8, 0),
+    showDay: false,
+    location: "Oldenzaal, Netherlands",
+    company: "Parker"
   },
   {
-    text: "Hi!",
-    date: new Date(2017, 5, 21),
+    title: "Teaching Assistant",
+    text: "Helping students with Java and associated math problems.",
+    startDate: new Date(2017, 8, 0),
+    endDate: new Date(2018, 1, 0),
     usedList: {
       items:
-        [<IconPython key="Python"/>, <IconReact key="React"/>]
+        [<IconJava key="Java"/>]
     }
   },
   {
+    title: "Software Development Intern",
     text: "asdfadsf",
-    date: new Date(2018, 5, 21)
+    startDate: new Date(2018, 5, 21)
   },
   {
+    title: "",
     text: "A very long text, that is very cool!",
-    date: new Date(2019, 5, 5)
+    startDate: new Date(2019, 5, 5)
   },
   {
+    title: "",
     text: "The future",
-    date: new Date(2020, 4, 4),
+    startDate: new Date(2020, 4, 4),
     showDay: true
   },
 ]}

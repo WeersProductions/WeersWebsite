@@ -32,7 +32,7 @@ interface timelineState {
 export class Timeline extends React.Component<timelineProps, timelineState> {
   constructor(props: timelineProps) {
     super(props);
-    this.state = {items: this.props.items.sort((a,b)=>a.date.getTime()-b.date.getTime())};
+    this.state = {items: this.props.items.sort((a,b)=>b.startDate.getTime()-a.startDate.getTime())};
   }
 
   public render() {

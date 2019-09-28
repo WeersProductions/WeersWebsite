@@ -2,11 +2,17 @@ import * as React from "react"
 import * as timelineStyles from "./Timeline.module.scss"
 import { motion, Variants } from "framer-motion"
 import {UsedList, UsedListProps} from "./UsedList/UsedList";
+import {TiLocationOutline} from "react-icons/ti";
+import {MdWork} from "react-icons/md";
 
 export interface itemData {
-  date: Date
+  startDate: Date
+  endDate?: Date
   showDay?: boolean
   text: string
+  title: string
+  company?: string
+  location?: string
   usedList?: UsedListProps
 }
 
@@ -44,8 +50,10 @@ const bubbleVariants: Variants = {
   hover: {
     rotateY: 180,
     transition: {
-      duration: 0.3,
-    },
+      rotateY: {
+        duration: 0.3
+      }
+    }
   },
 }
 
@@ -79,8 +87,17 @@ export class TimelineItem extends React.Component<timelineItemProps, {}> {
           className={[timelineStyles.bubble, orientation].join(" ")}
         />
         <div className={timelineStyles.content}>
-          <h2>{this.props.date.toLocaleDateString("en-US", dateOptions)}</h2>
+          <div className={timelineStyles.date}>
+            <h2 className={timelineStyles.startDate}>{this.props.startDate.toLocaleDateString("en-US", dateOptions)}</h2>
+            {this.props.endDate ? <div className={timelineStyles.endDateContainer}><h3 className={timelineStyles.splitter}>-</h3><h4 className={timelineStyles.endDate}>{this.props.endDate.toLocaleDateString("en-US", dateOptions)}</h4></div> : undefined}
+          </div>
+          <p className={timelineStyles.title}>{this.props.title}</p>
+          <div className={timelineStyles.divider}/>
           <p>{this.props.text}</p>
+          <div className={timelineStyles.extraInfo}>
+            {this.props.location ? <div className={timelineStyles.infoContainer}><TiLocationOutline className={timelineStyles.icon}/><p>{this.props.location}</p></div> : undefined}
+            {this.props.company ? <div className={timelineStyles.infoContainer}><MdWork className={timelineStyles.icon}/><p>{this.props.company}</p></div> : undefined}
+          </div>
           {this.props.children}
           {this.props.usedList ? <UsedList {...this.props.usedList}/> : undefined}
         </div>
