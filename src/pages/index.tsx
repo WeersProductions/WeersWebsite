@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as styles from "./Index.module.scss"
-import Container from "../components/container"
+import Container from "../components/Container"
 
 import { timelineProps, Timeline } from "../components/Timeline"
 import Header from "../components/Header"
