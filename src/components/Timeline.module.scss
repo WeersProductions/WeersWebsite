@@ -1,12 +1,8 @@
 @import "../styles/constants";
-$line-color: #4a69bd;
-$line-color2: #6a89cc;
-$box-color: #6a89cc;
 $timeline-gap: 30px;
 
 .line {
     position: absolute;
-    border-radius: 2px;
     width: 6px;
     background: $line-color;
     background: -moz-linear-gradient(180deg, $line-color 0%, $line-color 74%, transparent 100%);
@@ -17,10 +13,18 @@ $timeline-gap: 30px;
     bottom: -30px;
     left: 50%;
     margin-left: -3px;
+    transform-origin: bottom;
 
     @media #{$small-screen} {
         left: 37px;
     }
+}
+
+.splitter {
+    height: 3px;
+    width: 100%;
+    background-color: $line-color;
+    border-radius: 2px;
 }
 
 .timeline {

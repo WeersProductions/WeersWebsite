@@ -14,10 +14,30 @@ const childrenSequenceVariant: Variants = {
 
 const timelineVariant: Variants = {
   active: {
-    scaleY: 1
+    scaleY: 1,
+    transition: {
+      ease: "easeOut",
+      duration: 0.2
+    }
   },
   disabled: {
     scaleY: 0
+  }
+}
+
+const splitterVariant: Variants = {
+  active: {
+    scaleX: 1,
+    transition: {
+      ease: "easeOut",
+      duration: 0.2
+    }
+  },
+  disabled: {
+    scaleX: 0,
+    transition: {
+      duration: 0.2
+    }
   }
 }
 
@@ -52,8 +72,9 @@ export class Timeline extends React.Component<timelineProps, timelineState> {
 
     return (
         <motion.div initial="disabled" animate="active" variants={childrenSequenceVariant} className={timelineStyles.timeline}>
-            <motion.div variants={timelineVariant} className={timelineStyles.line}/>
-            {itemsHtml}
+          <motion.div variants={splitterVariant} className={timelineStyles.splitter}/>
+          <motion.div variants={timelineVariant} className={timelineStyles.line}/>
+          {itemsHtml}
         </motion.div>
     );
   }
