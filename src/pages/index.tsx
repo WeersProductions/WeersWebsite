@@ -66,7 +66,7 @@ const tlProps: timelineProps = {
       location: "Enschede",
       company: {
         display: "University of Twente",
-        link: "https://www.weersproductions.com"
+        link: "https://www.utwente.nl/en/"
       },
     },
     {
@@ -178,6 +178,17 @@ const tlProps: timelineProps = {
           <IconVBNet key="VB.net" />,
         ]
       }
+    },
+    {
+      title: "Klokhuis gamemaker award",
+      text: "Using game maker studio from a Dutch tv programme, I made a lot of games. One of my final games created using this studio, won the big adventure game reward. After this I was very motivated to continue building games and started with Unity3D and GameMaker Studio.",
+      startDate: new Date(2010, 5, 1)
+    },
+    {
+      title: "My very first birthday!",
+      text: "",
+      startDate: new Date(1998, 8, 23),
+      showDay: true
     }
   ],
 }
