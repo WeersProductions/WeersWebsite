@@ -34,6 +34,10 @@ const tlProps: timelineProps = {
           <IconTypescript key="Typescript" />
         ],
       },
+      website: {
+        link: "https://github.com/WeersProductions/WeersWebsite",
+        display: "GitHub Repository"
+      }
     },
     {
       title: "Junior developer",

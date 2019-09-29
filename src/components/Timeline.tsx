@@ -36,7 +36,7 @@ export class Timeline extends React.Component<timelineProps, timelineState> {
   }
 
   public render() {
-    function generateItem(item : itemData, index : number) {
+    function generateItem(item : itemData, index : number, array: itemData[]) {
         var orientation : 'left' | 'right' = 'left';
         if (index % 2 == 0) {
             orientation = 'right';
@@ -45,6 +45,7 @@ export class Timeline extends React.Component<timelineProps, timelineState> {
           <TimelineItem
             key={index.toString()}
             orientation={orientation}
+            zIndex={array.length - index}
             {...item}/>);
     }
     var itemsHtml = this.state.items.map(generateItem);

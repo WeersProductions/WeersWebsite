@@ -21,6 +21,7 @@ export interface itemData {
   company?: string
   location?: string
   usedList?: UsedListProps
+  zIndex?: number
 }
 
 interface timelineItemProps extends itemData {
@@ -91,6 +92,7 @@ export class TimelineItem extends React.Component<timelineItemProps, {}> {
     return (
       <motion.div
         className={[timelineStyles.container, orientation].join(" ")}
+        style={{zIndex: this.props.zIndex}}
         whileHover="hover"
         variants={containerVariants}
       >
