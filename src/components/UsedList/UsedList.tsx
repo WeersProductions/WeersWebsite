@@ -13,7 +13,7 @@ export class UsedList extends React.Component<UsedListProps, {}> {
 
   public render() {
     return (
-      <ScrollContainer className={usedListStyles.viewPort}>
+      <ScrollContainer vertical={false} horizontal={true} nativeMobileScroll={true} className={usedListStyles.viewPort}>
         <div className={usedListStyles.container}>
           {this.props.items}
         </div>
