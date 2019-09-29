@@ -35,6 +35,7 @@ export default class Icon extends React.Component<IconProps, IconState> {
   }
 
   switchExpand = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    console.log("asdf");
     this.setState({expanded: !this.state.expanded});
   }
 

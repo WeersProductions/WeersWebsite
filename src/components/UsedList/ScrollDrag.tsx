@@ -7,6 +7,7 @@ interface ScrollDragProps {
 interface ScrollDragState {
     ref: React.RefObject<HTMLDivElement>
     isScrolling: boolean
+    preventClick: boolean
 }
 
 export class ScrollDrag extends React.Component<ScrollDragProps, ScrollDragState> {
@@ -14,12 +15,13 @@ export class ScrollDrag extends React.Component<ScrollDragProps, ScrollDragState
     super(props);
     this.state = {
       isScrolling: false,
-      ref: React.createRef()
+      ref: React.createRef(),
+      preventClick: false
     };
   }
 
   onMouseDown = (e:any) => {
-    this.setState({ ...this.state, isScrolling: true});
+    this.setState({isScrolling: true});
     window.addEventListener('mouseup', this.onMouseUp);
   };
 
@@ -27,8 +29,9 @@ export class ScrollDrag extends React.Component<ScrollDragProps, ScrollDragState
     if(this.state.isScrolling) {
       console.log("todo: prevent click on icon.");
       e.preventDefault();
+      e.stopPropagation();
+      this.setState({isScrolling: false, preventClick: true});
     }
-    this.setState({ ...this.state, isScrolling: false });
     window.removeEventListener('mouseup', this.onMouseUp);
   };
 
@@ -40,6 +43,16 @@ export class ScrollDrag extends React.Component<ScrollDragProps, ScrollDragState
     }
   };
 
+  onClick = (e:any) => {
+    const target = e.target;
+    console.log(this.state.preventClick, target.id !== 'scrollContainer');
+    if (this.state.preventClick && target.id !== 'scrollContainer') {
+      e.stopPropagation();
+      e.preventDefault();
+      this.setState({preventClick: false});
+    }
+  }
+
   render() {
     const { className } = this.props;
     const {ref} = this.state;
@@ -50,10 +63,9 @@ export class ScrollDrag extends React.Component<ScrollDragProps, ScrollDragState
         onMouseUp={this.onMouseUp}
         onMouseMove={this.onMouseMove}
         className={className}
-        id="test"
+        onClickCapture={this.onClick}
+        id="scrollContainer"
       >
-        {/* {React.Children.map(this.props.children, child =>
-            React.Children.only(child))} */}
             {this.props.children}
       </div>
     );

@@ -85,8 +85,8 @@ export class TimelineItem extends React.Component<timelineItemProps, {}> {
     }
     var list;
     if (this.props.list) {
-      list = this.props.list.map((value) => {
-        return <li>{value}</li>;
+      list = this.props.list.map((value, index) => {
+        return <li key={index}>{value}</li>;
       });
     }
     return (
