@@ -16,11 +16,25 @@ import IconCPlusPlus from "../components/Icons/IconCPlusPlus"
 import IconCSharp from "../components/Icons/IconCSharp"
 import IconUnity from "../components/Icons/IconUnity"
 import IconBlender from "../components/Icons/IconBlender"
+import IconTypescript from "../components/Icons/IconTypescript"
 
-interface IndexPageProps {}
+interface IndexPageProps { }
 
 const tlProps: timelineProps = {
   items: [
+    {
+      title: "This website",
+      text: "Made to get to know more about web development.",
+      startDate: new Date(2019, 9, 10),
+      endDate: new Date(2019, 9, 19),
+      showDay: true,
+      usedList: {
+        items: [
+          <IconReact key="React" />,
+          <IconTypescript key="Typescript" />
+        ],
+      },
+    },
     {
       title: "Junior developer",
       text:
@@ -91,7 +105,7 @@ const tlProps: timelineProps = {
         items: [
           <IconCSharp key="C#" />,
           <IconUnity key="Unity" />,
-          <IconBlender key="Blender"/>,
+          <IconBlender key="Blender" />,
         ]
       }
     },
@@ -114,7 +128,7 @@ const tlProps: timelineProps = {
       usedList: {
         items: [
           <IconUnity key="Unity" />,
-          <IconCSharp key="C#"/>
+          <IconCSharp key="C#" />
         ]
       }
     },
@@ -130,7 +144,7 @@ const tlProps: timelineProps = {
       usedList: {
         items: [
           <IconUnity key="Unity" />,
-          <IconCSharp key="C#"/>
+          <IconCSharp key="C#" />
         ]
       }
     },
