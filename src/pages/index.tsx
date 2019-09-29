@@ -47,7 +47,10 @@ const tlProps: timelineProps = {
       endDate: new Date(2016, 8, 0),
       showDay: false,
       location: "Oldenzaal, Netherlands",
-      company: "Parker Hannifin",
+      company: {
+        display: "Parker Hannifin",
+        link: "https://www.parker.com"
+      },
       usedList: {
         items: [<IconVBNet key="VB.net" />],
       },
@@ -61,7 +64,10 @@ const tlProps: timelineProps = {
         items: [<IconJava key="Java" />],
       },
       location: "Enschede",
-      company: "University of Twente",
+      company: {
+        display: "University of Twente",
+        link: "https://www.weersproductions.com"
+      },
     },
     {
       title: "Software Development Intern",
@@ -70,7 +76,10 @@ const tlProps: timelineProps = {
       startDate: new Date(2018, 3, 0),
       endDate: new Date(2018, 8, 0),
       location: "Silicon Valley, California",
-      company: "JauntXR",
+      company: {
+        display: "JauntXR",
+        link: "https://www.jauntxr.com/"
+      },
       list: [
         "Developed software for new VR and AR technology",
         "Worked as a member of Jaunt's R&D team focusing on volumetric capture technology",
@@ -118,7 +127,10 @@ const tlProps: timelineProps = {
       text: "I will finish my bachelor degree at this moment. My average grade is an 8.3 out of 10 at this moment.",
       startDate: new Date(2019, 11, 8),
       showDay: true,
-      company: "University of Twente"
+      company: {
+        display: "University of Twente",
+        link: "https://www.utwente.nl/en/"
+      }
     },
     {
       title: "Line Runner",

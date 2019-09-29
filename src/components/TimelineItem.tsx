@@ -18,7 +18,10 @@ export interface itemData {
     display: string,
     link: string
   }
-  company?: string
+  company?: {
+    display: string,
+    link: string
+  }
   location?: string
   usedList?: UsedListProps
   zIndex?: number
@@ -114,8 +117,8 @@ export class TimelineItem extends React.Component<timelineItemProps, {}> {
           {this.props.usedList ? <UsedList {...this.props.usedList}/> : undefined}
           <div className={timelineStyles.extraInfo}>
             {this.props.location ? <div className={timelineStyles.infoContainer}><TiLocationOutline className={timelineStyles.icon}/><p>{this.props.location}</p></div> : undefined}
-            {this.props.company ? <div className={timelineStyles.infoContainer}><MdWork className={timelineStyles.icon}/><p>{this.props.company}</p></div> : undefined}
-            {this.props.website ? <div className={timelineStyles.infoContainer}><FiGlobe className={timelineStyles.icon}/><a href={this.props.website.link}>{this.props.website.display}</a></div> : undefined}
+            {this.props.company ? <div className={timelineStyles.infoContainer}><MdWork className={timelineStyles.icon}/><a href={this.props.company.link} target="_blank">{this.props.company.display}</a></div> : undefined}
+            {this.props.website ? <div className={timelineStyles.infoContainer}><FiGlobe className={timelineStyles.icon}/><a href={this.props.website.link} target="_blank">{this.props.website.display}</a></div> : undefined}
           </div>
         </div>
       </motion.div>
