@@ -96,11 +96,59 @@ const tlProps: timelineProps = {
       }
     },
     {
-      title: "",
-      text: "The future",
-      startDate: new Date(2020, 4, 4),
+      title: "Bachelor's degree Technical Computer Science",
+      text: "I will finish my bachelor degree at this moment. My average grade is an 8.3 out of 10 at this moment.",
+      startDate: new Date(2019, 11, 8),
       showDay: true,
+      company: "University of Twente"
     },
+    {
+      title: "Line Runner",
+      text: "Built a small game for Windows Phone and Android",
+      website: {
+        display: "Trailer",
+        link: "https://www.youtube.com/watch?v=whx4XGFnwpY"
+      },
+      startDate: new Date(2015, 4, 1),
+      endDate: new Date(2015, 5, 1),
+      usedList: {
+        items: [
+          <IconUnity key="Unity" />,
+          <IconCSharp key="C#"/>
+        ]
+      }
+    },
+    {
+      title: "Pellet Adventure",
+      text: "A 2d platformer with physics, character customization and dozens of levels to play. Built for Windows Phone, Android tablets and Android phones.",
+      website: {
+        display: "Trailer",
+        link: "https://www.youtube.com/watch?v=vLVNEmtTtaY"
+      },
+      startDate: new Date(2015, 1, 1),
+      endDate: new Date(2015, 4, 1),
+      usedList: {
+        items: [
+          <IconUnity key="Unity" />,
+          <IconCSharp key="C#"/>
+        ]
+      }
+    },
+    {
+      title: "Chain Calculator",
+      text: "Built a smart calculator for Windows Phone and Windows Store.",
+      website: {
+        display: "Windows store",
+        link: "https://www.microsoft.com/en-us/p/chain-calculator/9nblgggzj2ww?activetab=pivot:overviewtab"
+      },
+      startDate: new Date(2014, 9, 15),
+      endDate: new Date(2014, 11, 15),
+      usedList: {
+        items: [
+          <IconVBNet key="VB.net" />,
+        ]
+      }
+    }
   ],
 }
 
