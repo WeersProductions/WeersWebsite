@@ -1,6 +1,7 @@
 import * as React from "react"
 import * as headerStyles from "./Header.module.scss"
 import Title from "./Title"
+import profilePicture from "./ProfilePicture.jpeg"
 
 export default class Header extends React.Component<{}, {}> {
   public render() {
@@ -8,7 +9,7 @@ export default class Header extends React.Component<{}, {}> {
       <div className={headerStyles.headerContainer}>
         <div className={headerStyles.header}>
           <span className={headerStyles.image}>
-            <img src="static/images/ProfilePicture.jpeg" />
+            <img src={profilePicture} />
           </span>
           <div className={headerStyles.text}>
             <Title>Floris Weers</Title>

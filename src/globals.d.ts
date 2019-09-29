@@ -4,3 +4,5 @@ declare module '*.scss' {
   }
 
 declare module 'react-indiana-drag-scroll';
+
+declare module '*.jpeg';
