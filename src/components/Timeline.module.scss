@@ -163,6 +163,11 @@ $timeline-gap: 30px;
             flex-direction: row;
             align-items: center;
             font-size: 0.8rem;
+            padding-right: 1rem;
+
+            a {
+                color: unset;
+            }
         }
     }
 
