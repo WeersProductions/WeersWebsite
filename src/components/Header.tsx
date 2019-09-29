@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as headerStyles from "./Header.module.scss"
-import Title from "./title"
+import Title from "./Title"
 
 export default class Header extends React.Component<{}, {}> {
   public render() {

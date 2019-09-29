@@ -2,7 +2,7 @@ import * as React from "react"
 import * as styles from "./Index.module.scss"
 import Container from "../components/container"
 
-import { timelineProps, Timeline } from "../components/timeline"
+import { timelineProps, Timeline } from "../components/Timeline"
 import Header from "../components/Header"
 import IconPython from "../components/Icons/IconPython"
 import IconReact from "../components/Icons/IconReact"
