@@ -45,8 +45,7 @@ export class Timeline extends React.Component<timelineProps, timelineState> {
           <TimelineItem
             key={index.toString()}
             orientation={orientation}
-            {...item}>
-          </TimelineItem>);
+            {...item}/>);
     }
     var itemsHtml = this.state.items.map(generateItem);
 

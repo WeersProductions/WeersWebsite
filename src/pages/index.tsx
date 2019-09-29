@@ -15,6 +15,7 @@ import IconMagicLeap from "../components/Icons/IconMagicLeap"
 import IconCPlusPlus from "../components/Icons/IconCPlusPlus"
 import IconCSharp from "../components/Icons/IconCSharp"
 import IconUnity from "../components/Icons/IconUnity"
+import IconBlender from "../components/Icons/IconBlender"
 
 interface IndexPageProps {}
 
@@ -24,7 +25,7 @@ const tlProps: timelineProps = {
       title: "Junior developer",
       text:
         "I wrote software that automatically generates test reports based on the selected machine component. Engineers will enter their test results and the measurements will be checked on correctness.",
-      startDate: new Date(2016, 5, 0),
+      startDate: new Date(2016, 6, 0),
       endDate: new Date(2016, 8, 0),
       showDay: false,
       location: "Oldenzaal, Netherlands",
@@ -36,8 +37,8 @@ const tlProps: timelineProps = {
     {
       title: "Teaching Assistant",
       text: "Helping students with Java and associated math problems.",
-      startDate: new Date(2017, 8, 0),
-      endDate: new Date(2018, 1, 0),
+      startDate: new Date(2017, 9, 0),
+      endDate: new Date(2018, 2, 0),
       usedList: {
         items: [<IconJava key="Java" />],
       },
@@ -48,10 +49,18 @@ const tlProps: timelineProps = {
       title: "Software Development Intern",
       text:
         "Joined Jaunt's Research & Development team as a software engineering intern. ",
-      startDate: new Date(2018, 2, 0),
-      endDate: new Date(2018, 7),
+      startDate: new Date(2018, 3, 0),
+      endDate: new Date(2018, 8, 0),
       location: "Silicon Valley, California",
       company: "JauntXR",
+      list: [
+        "Developed software for new VR and AR technology",
+        "Worked as a member of Jaunt's R&D team focusing on volumetric capture technology",
+        "Worked alongside CTO & Founder Athur van Hoff",
+        "Solely developed a Unity SDK and presented it to the company",
+        "Demoed Jaunt's newest products for potential customers and investors",
+        "Worked for one of the leading AR andVR companies in Silicon Valley"
+      ],
       usedList: {
         items: [
           <IconCPlusPlus key="CPlusPlus" />,
@@ -63,13 +72,28 @@ const tlProps: timelineProps = {
           <IconMagicLeap key="MagicLeap" />,
         ],
       },
+      website: {
+        link: "https://blog.jauntxr.com/the-jaunt-internship-program-b898cc8c0573",
+        display: "My JauntXR blog post"
+      }
     },
     {
       title: "CEO",
       text:
         "Founded my own game-development company to release 'Rule Your School', a game for Steam.",
-      startDate: new Date(2019, 5, 5),
-      website: "www.weersproductions.com",
+      startDate: new Date(2016, 7, 1),
+      notEndedYet: true,
+      website: {
+        display: "weersproductions.com",
+        link: "https://www.weersproductions.com"
+      },
+      usedList: {
+        items: [
+          <IconCSharp key="C#" />,
+          <IconUnity key="Unity" />,
+          <IconBlender key="Blender"/>,
+        ]
+      }
     },
     {
       title: "",
