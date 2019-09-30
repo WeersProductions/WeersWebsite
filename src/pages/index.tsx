@@ -17,6 +17,7 @@ import IconCSharp from "../components/Icons/IconCSharp"
 import IconUnity from "../components/Icons/IconUnity"
 import IconBlender from "../components/Icons/IconBlender"
 import IconTypescript from "../components/Icons/IconTypescript"
+import IconPugJS from "../components/Icons/IconPugJS"
 
 interface IndexPageProps { }
 
@@ -37,6 +38,25 @@ const tlProps: timelineProps = {
       website: {
         link: "https://github.com/WeersProductions/WeersWebsite",
         display: "GitHub Repository"
+      }
+    },
+    {
+      title: "SNiC website",
+      text: "National Computer Science Symposium website. People can login, favorite talks, enroll for talks and get all the information required for the congress itself.",
+      startDate: new Date(2019, 7,31),
+      notEndedYet: true,
+      website: {
+        link: "https://www.resilit.snic.nl/",
+        display: "resilit.snic.nl"
+      },
+      company: {
+        display: "SNiC",
+        link: "https://www.snic.nl/"
+      },
+      usedList: {
+        items: [
+          <IconPugJS key="PugJS"/>
+        ]
       }
     },
     {
@@ -68,6 +88,22 @@ const tlProps: timelineProps = {
         display: "University of Twente",
         link: "https://www.utwente.nl/en/"
       },
+    },
+    {
+      title: "Menu Manager for Unity",
+      text: "A library that takes control of menus, pages and popups in Unity.",
+      startDate: new Date(2017, 9, 19),
+      endDate: new Date(2019, 2, 17),
+      usedList: {
+        items: [
+        <IconUnity key="Unity" />,
+        <IconCSharp key="C#" />
+      ],
+      },
+      website: {
+        display: "Github Repository",
+        link: "https://github.com/WeersProductions/MenuManager"
+      }
     },
     {
       title: "Software Development Intern",
