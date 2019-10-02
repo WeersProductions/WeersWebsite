@@ -18,6 +18,7 @@ import IconUnity from "../components/Icons/IconUnity"
 import IconBlender from "../components/Icons/IconBlender"
 import IconTypescript from "../components/Icons/IconTypescript"
 import IconPugJS from "../components/Icons/IconPugJS"
+import IconFFMPEG from "../components/Icons/IconFFMPEG"
 
 interface IndexPageProps { }
 
@@ -58,6 +59,23 @@ const tlProps: timelineProps = {
           <IconPugJS key="PugJS"/>
         ]
       }
+    },
+    {
+      title: "Automatic home video editing on music",
+      text: "Research on automatic analyzing, ranking and editing of both videos and photos in rhythm of the supplied music.",
+      list: ["Generates an aftermovie within 5 minutes.",
+      "Tries to use the most stable, colorful and simple content while still cutting in rhythm of the music.",
+       "Uses graph theory to estimate a best combination of videos and rhythm."],
+      startDate: new Date(2019, 4, 15),
+      endDate: new Date(2019, 7, 30),
+      showDay: true,
+      website: {
+        display: "Paper",
+        link: "https://essay.utwente.nl/78691/1/weers_BA_EEMCS.pdf"
+      },
+      usedList: {
+        items: [<IconFFMPEG key="FFMPEG"/>, <IconPython key="Python" />, <IconCPlusPlus key="C++"/>],
+      },
     },
     {
       title: "Junior developer",
