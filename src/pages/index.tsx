@@ -178,12 +178,33 @@ const tlProps: timelineProps = {
     },
     {
       title: "Bachelor's degree Technical Computer Science",
-      text: "I will finish my bachelor degree at this moment. My average grade is an 8.3 out of 10 at this moment.",
+      text: "I graduated my study Technical Computer Science with an average of 8.3 out of 10. I really enjoyed this study and the projects that were included.",
       startDate: new Date(2019, 11, 8),
       showDay: true,
       company: {
         display: "University of Twente",
         link: "https://www.utwente.nl/en/"
+      }
+    },
+    {
+      title: "Data-Science master",
+      text: "I will start with data-science, a track of the Computer Science master.",
+      startDate: new Date(2020, 7, 8),
+      showDay: false,
+      company: {
+        display: "University of Twente",
+        link: "https://www.utwente.nl/en/"
+      }
+    },
+    {
+      title: "Apple: Software Engineer Intern",
+      text: "As part of the Siri team in Cambridge, United Kingdom, I got to work on really exciting stuff!",
+      startDate: new Date(2020, 2, 3),
+      endDate: new Date(2020, 7, 3),
+      showDay: true,
+      company: {
+        display: "Apple Inc.",
+        link: "https://www.apple.com"
       }
     },
     {

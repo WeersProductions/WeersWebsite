@@ -1,5 +1,9 @@
 @import "../styles/constants";
 
+.infoContainer {
+  margin: 1rem;
+}
+
 .headerContainer {
   background: $box-color;
   padding-top: 10px;
@@ -16,8 +20,6 @@
     }
 
     .text {
-      margin: 1rem;
-
       @media #{$small-screen} {
         margin-top: 0px;
       }

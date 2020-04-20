@@ -3,6 +3,9 @@ import * as IconStyles from "./Icon.module.scss"
 import {motion, Variants} from "framer-motion"
 
 export interface IconProps {
+  useHover?: boolean;
+  openWebpage?: string;
+  iconName?: string;
 }
 
 export interface IconState {
@@ -34,16 +37,33 @@ export default class Icon extends React.Component<IconProps, IconState> {
     this.state = {expanded: false};
   }
 
+  openWebpage = () => {
+    if (this.props.openWebpage) {
+      window.open(this.props.openWebpage, "_blank");
+    }
+  }
+
   switchExpand = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    console.log("asdf");
     this.setState({expanded: !this.state.expanded});
+    this.openWebpage();
   }
 
   public render() {
     const animationState:string = this.state.expanded ? "visible" : "hidden";
-    return <div onClick={this.switchExpand} className={IconStyles.container + " " + this.name}>
+    let content = <>
         <div className={IconStyles.icon}>{this.IconSVG}</div>
-        <motion.div variants={textVariants} initial="hidden" animate={animationState} className={IconStyles.text}>{this.name}</motion.div>
-      </div>
+        <motion.div variants={textVariants} className={IconStyles.text}>{this.name}</motion.div>
+    </>
+    let className = IconStyles.container + " " + this.name;
+
+    if (this.props.useHover) {
+      return <motion.div whileHover="visible" initial="hidden" className={className} onClick={this.openWebpage}>
+        {content}
+      </motion.div>
+    }
+
+    return <motion.div onClick={this.switchExpand} animate={animationState} initial="hidden" className={className}>
+        {content}
+      </motion.div>
   }
 }
