@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as timelineStyles from "./Timeline.module.scss"
-import { motion, Variants } from "framer-motion"
+import { motion, Variants, AnimatePresence } from "framer-motion"
 import {UsedList, UsedListProps} from "./UsedList/UsedList";
 import {TiLocationOutline} from "react-icons/ti";
 import {MdWork} from "react-icons/md";
@@ -25,6 +25,7 @@ export interface itemData {
   location?: string
   usedList?: UsedListProps
   zIndex?: number
+  filterKeyWord: string
 }
 
 interface timelineItemProps extends itemData {
@@ -45,6 +46,10 @@ const containerVariants: Variants = {
   hover: {
     scale: 1.1,
   },
+  exit: {
+    scale: 0,
+    opacity: 0
+  }
 }
 
 const bubbleVariants: Variants = {
@@ -98,6 +103,7 @@ export class TimelineItem extends React.Component<timelineItemProps, {}> {
         style={{zIndex: this.props.zIndex}}
         whileHover="hover"
         variants={containerVariants}
+        exit="exit"
       >
         <div className={[timelineStyles.arrow, orientation].join(" ")} />
         <motion.div

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as timelineStyles from "./Timeline.module.scss"
 import {itemData, TimelineItem} from "./TimelineItem"
-import {motion, Variants} from "framer-motion";
+import {motion, Variants, AnimatePresence} from "framer-motion";
 
 const childrenSequenceVariant: Variants = {
   active: {
@@ -52,7 +52,6 @@ interface timelineState {
 export class Timeline extends React.Component<timelineProps, timelineState> {
   constructor(props: timelineProps) {
     super(props);
-    this.state = {items: this.props.items.sort((a,b)=>b.startDate.getTime()-a.startDate.getTime())};
   }
 
   public render() {
@@ -63,19 +62,19 @@ export class Timeline extends React.Component<timelineProps, timelineState> {
         }
         return (
           <TimelineItem
-            key={index.toString()}
+            key={item.title}
             orientation={orientation}
             zIndex={array.length - index}
             {...item}/>);
     }
-    var itemsHtml = this.state.items.map(generateItem);
+    var itemsHtml = this.props.items.map(generateItem);
 
     return (
-        <motion.div initial="disabled" animate="active" variants={childrenSequenceVariant} className={timelineStyles.timeline}>
-          <motion.div variants={splitterVariant} className={timelineStyles.topSplitter}/>
-          <motion.div variants={timelineVariant} className={timelineStyles.line}/>
-          {itemsHtml}
-        </motion.div>
+          <motion.div initial="disabled" animate="active" variants={childrenSequenceVariant} className={timelineStyles.timeline}>
+            <motion.div variants={splitterVariant} className={timelineStyles.topSplitter}/>
+            <motion.div variants={timelineVariant} className={timelineStyles.line}/>
+            {itemsHtml}
+          </motion.div>
     );
   }
 }

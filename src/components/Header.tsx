@@ -3,8 +3,14 @@ import * as headerStyles from "./Header.module.scss"
 import Title from "./Title"
 import profilePicture from "./ProfilePicture.jpeg"
 import SocialList from "./SocialList"
+import { FilterList, filter } from "./FilterList"
 
-export default class Header extends React.Component<{}, {}> {
+interface headerProps {
+  filters: filter[]
+  onFilterChange: (change: filter) => void
+}
+
+export default class Header extends React.Component<headerProps, {}> {
   public render() {
     return (
       <div className={headerStyles.headerContainer}>
@@ -20,6 +26,10 @@ export default class Header extends React.Component<{}, {}> {
             <SocialList />
           </div>
         </div>
+        <FilterList
+          onChange={this.props.onFilterChange}
+          filters={this.props.filters}
+        />
       </div>
     )
   }

@@ -20,7 +20,13 @@ import IconTypescript from "../components/Icons/IconTypescript"
 import IconPugJS from "../components/Icons/IconPugJS"
 import IconFFMPEG from "../components/Icons/IconFFMPEG"
 
+import {filter} from "../components/FilterList"
+
 interface IndexPageProps { }
+
+const filterAcademic: string = "Academic"
+const filterCompanies: string = "Companies"
+const filterHobbies: string = "Hobbies"
 
 const tlProps: timelineProps = {
   items: [
@@ -39,7 +45,8 @@ const tlProps: timelineProps = {
       website: {
         link: "https://github.com/WeersProductions/WeersWebsite",
         display: "GitHub Repository"
-      }
+      },
+      filterKeyWord: filterHobbies
     },
     {
       title: "SNiC website",
@@ -58,7 +65,8 @@ const tlProps: timelineProps = {
         items: [
           <IconPugJS key="PugJS"/>
         ]
-      }
+      },
+      filterKeyWord: filterHobbies
     },
     {
       title: "Automatic home video editing on music",
@@ -76,6 +84,7 @@ const tlProps: timelineProps = {
       usedList: {
         items: [<IconFFMPEG key="FFMPEG"/>, <IconPython key="Python" />, <IconCPlusPlus key="C++"/>],
       },
+      filterKeyWord: filterAcademic
     },
     {
       title: "Junior developer",
@@ -92,6 +101,7 @@ const tlProps: timelineProps = {
       usedList: {
         items: [<IconVBNet key="VB.net" />],
       },
+      filterKeyWord: filterCompanies
     },
     {
       title: "Teaching Assistant",
@@ -106,6 +116,7 @@ const tlProps: timelineProps = {
         display: "University of Twente",
         link: "https://www.utwente.nl/en/"
       },
+      filterKeyWord: filterAcademic
     },
     {
       title: "Menu Manager for Unity",
@@ -121,7 +132,8 @@ const tlProps: timelineProps = {
       website: {
         display: "Github Repository",
         link: "https://github.com/WeersProductions/MenuManager"
-      }
+      },
+      filterKeyWord: filterHobbies
     },
     {
       title: "Software Development Intern",
@@ -156,7 +168,8 @@ const tlProps: timelineProps = {
       website: {
         link: "https://blog.jauntxr.com/the-jaunt-internship-program-b898cc8c0573",
         display: "My JauntXR blog post"
-      }
+      },
+      filterKeyWord: filterCompanies
     },
     {
       title: "CEO",
@@ -174,7 +187,8 @@ const tlProps: timelineProps = {
           <IconUnity key="Unity" />,
           <IconBlender key="Blender" />,
         ]
-      }
+      },
+      filterKeyWord: filterHobbies
     },
     {
       title: "Bachelor's degree Technical Computer Science",
@@ -184,17 +198,19 @@ const tlProps: timelineProps = {
       company: {
         display: "University of Twente",
         link: "https://www.utwente.nl/en/"
-      }
+      },
+      filterKeyWord: filterAcademic
     },
     {
-      title: "Data-Science master",
-      text: "I will start with data-science, a track of the Computer Science master.",
+      title: "Data science master",
+      text: "I will start with data science, a track of the Computer Science master.",
       startDate: new Date(2020, 7, 8),
       showDay: false,
       company: {
         display: "University of Twente",
         link: "https://www.utwente.nl/en/"
-      }
+      },
+      filterKeyWord: filterAcademic
     },
     {
       title: "Apple: Software Engineer Intern",
@@ -205,7 +221,8 @@ const tlProps: timelineProps = {
       company: {
         display: "Apple Inc.",
         link: "https://www.apple.com"
-      }
+      },
+      filterKeyWord: filterCompanies
     },
     {
       title: "Line Runner",
@@ -221,7 +238,8 @@ const tlProps: timelineProps = {
           <IconUnity key="Unity" />,
           <IconCSharp key="C#" />
         ]
-      }
+      },
+      filterKeyWord: filterHobbies
     },
     {
       title: "Pellet Adventure",
@@ -237,7 +255,8 @@ const tlProps: timelineProps = {
           <IconUnity key="Unity" />,
           <IconCSharp key="C#" />
         ]
-      }
+      },
+      filterKeyWord: filterHobbies
     },
     {
       title: "Chain Calculator",
@@ -252,28 +271,64 @@ const tlProps: timelineProps = {
         items: [
           <IconVBNet key="VB.net" />,
         ]
-      }
+      },
+      filterKeyWord: filterHobbies
     },
     {
       title: "Klokhuis gamemaker award",
       text: "Using game maker studio from a Dutch tv programme, I made a lot of games. One of my final games created using this studio, won the big adventure game reward. After this I was very motivated to continue building games and started with Unity3D and GameMaker Studio.",
-      startDate: new Date(2010, 5, 1)
+      startDate: new Date(2010, 5, 1),
+      filterKeyWord: filterHobbies
     },
     {
       title: "My very first birthday!",
       text: "",
       startDate: new Date(1998, 8, 23),
-      showDay: true
+      showDay: true,
+      filterKeyWord: ""
     }
   ],
 }
 
-export default class IndexPage extends React.Component<IndexPageProps, {}> {
+
+
+interface indexPageState {
+  filters: filter[]
+}
+
+export default class IndexPage extends React.Component<IndexPageProps, indexPageState> {
+
+  constructor(props: IndexPageProps) {
+    super(props);
+    this.state = {filters: [{name:filterAcademic, checked: true}, {name:filterCompanies, checked: true}, {name:filterHobbies, checked: true}]};
+    this.onFilterChange = this.onFilterChange.bind(this);
+  }
+
+  public onFilterChange(change: filter) {
+    let newFilters = this.state.filters.map((filter) => {
+      if (filter.name === change.name) {
+        return change;
+      } else {
+        return filter;
+      }
+    });
+    this.setState({filters: newFilters});
+  }
+
   public render() {
+    var timelineItems = tlProps.items.filter((item) => {
+      let filter = this.state.filters.find((value) => {
+        return value.name === item.filterKeyWord;
+      });
+      return filter?.checked;
+    });
+
+    timelineItems = timelineItems.sort((a,b)=>b.startDate.getTime()-a.startDate.getTime());
+
     return (
       <Container>
-        <Header />
-        <Timeline items={tlProps.items} />
+        <Header filters={this.state.filters} onFilterChange={this.onFilterChange}/>
+        <Timeline items={timelineItems} />
       </Container>
     )
   }

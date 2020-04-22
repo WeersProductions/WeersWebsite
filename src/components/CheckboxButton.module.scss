@@ -1,0 +1,37 @@
+@import "../styles/constants";
+
+.container {
+    border-radius: 5px;
+
+    color: $text-color;
+    font-family: 'Raleway', sans-serif;
+    font-size: large;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background-color: $box-color;
+    border-color: $text-color;
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+        margin-right: 4px;
+    }
+
+    &:hover {
+        background-color: $text-color;
+        color: $box-color;
+        border-color: $box-color;
+    }
+
+    &.selected {
+        background-color: $line-color;
+
+        &:hover {
+            color: $line-color;
+            border-color: $line-color;
+            background-color: $text-color;
+        }
+    }
+}
