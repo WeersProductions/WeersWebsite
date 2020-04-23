@@ -320,7 +320,7 @@ export default class IndexPage extends React.Component<IndexPageProps, indexPage
       let filter = this.state.filters.find((value) => {
         return value.name === item.filterKeyWord;
       });
-      return filter?.checked;
+      return !filter || filter?.checked;
     });
 
     timelineItems = timelineItems.sort((a,b)=>b.startDate.getTime()-a.startDate.getTime());
