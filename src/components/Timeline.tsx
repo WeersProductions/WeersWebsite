@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as timelineStyles from "./Timeline.module.scss"
 import {itemData, TimelineItem} from "./TimelineItem"
 import {motion, Variants, AnimatePresence} from "framer-motion";
+import { AnimateWhenVisible } from './Animations/AnimateWhenVisible';
 
 const childrenSequenceVariant: Variants = {
   active: {
@@ -61,16 +62,19 @@ export class Timeline extends React.Component<timelineProps, timelineState> {
             orientation = 'right';
         }
         return (
-          <TimelineItem
+          <AnimateWhenVisible>
+            <TimelineItem
             key={item.title}
             orientation={orientation}
             zIndex={array.length - index}
-            {...item}/>);
+            {...item}/>
+          </AnimateWhenVisible>);
     }
     var itemsHtml = this.props.items.map(generateItem);
 
     return (
-          <motion.div initial="disabled" animate="active" variants={childrenSequenceVariant} className={timelineStyles.timeline}>
+        //initial="disabled" animate="active"
+          <motion.div variants={childrenSequenceVariant} className={timelineStyles.timeline}>
             <motion.div variants={splitterVariant} className={timelineStyles.topSplitter}/>
             <motion.div variants={timelineVariant} className={timelineStyles.line}/>
             {itemsHtml}

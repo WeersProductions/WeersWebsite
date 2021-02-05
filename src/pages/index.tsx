@@ -72,7 +72,7 @@ const tlProps: timelineProps = {
       title: "Automatic home video editing on music",
       text: "Research on automatic analyzing, ranking and editing of both videos and photos in rhythm of the supplied music.",
       list: ["Generates an aftermovie within 5 minutes.",
-      "Tries to use the most stable, colorful and simple content while still cutting in rhythm of the music.",
+      "Tries to use the most stable, colorful and simple content while still editing in rhythm of the music.",
        "Uses graph theory to estimate a best combination of videos and rhythm."],
       startDate: new Date(2019, 4, 15),
       endDate: new Date(2019, 7, 30),
@@ -203,7 +203,7 @@ const tlProps: timelineProps = {
     },
     {
       title: "Data science master",
-      text: "I will start with data science, a track of the Computer Science master.",
+      text: "Start of Data Science, a track of the Computer Science master.",
       startDate: new Date(2020, 7, 8),
       showDay: false,
       company: {

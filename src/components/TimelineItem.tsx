@@ -1,6 +1,6 @@
 import * as React from "react"
 import * as timelineStyles from "./Timeline.module.scss"
-import { motion, Variants, AnimatePresence } from "framer-motion"
+import { motion, Variants, useViewportScroll} from "framer-motion"
 import {UsedList, UsedListProps} from "./UsedList/UsedList";
 import {TiLocationOutline} from "react-icons/ti";
 import {MdWork} from "react-icons/md";
@@ -29,11 +29,12 @@ export interface itemData {
 }
 
 interface timelineItemProps extends itemData {
-  orientation: "left" | "right"
+  orientation: "left" | "right",
+  children?: React.ReactNode
 }
 
 const containerVariants: Variants = {
-  active: {
+  visible: {
     scale: 1,
     y: 0,
     opacity: 1,
@@ -49,16 +50,21 @@ const containerVariants: Variants = {
   exit: {
     scale: 0,
     opacity: 0
+  },
+  hidden: {
+    scale: 0,
+    y: 50,
+    opacity: 0,
   }
 }
 
 const bubbleVariants: Variants = {
-  active: {
+  visible: {
     scale: 1,
     y: 0,
     opacity: 1,
   },
-  disabled: {
+  hidden: {
     scale: 0,
     y: 50,
     opacity: 0,
@@ -73,61 +79,64 @@ const bubbleVariants: Variants = {
   },
 }
 
-export class TimelineItem extends React.Component<timelineItemProps, {}> {
-  public render() {
-    var orientation
-    if (
-      this.props.orientation === undefined ||
-      this.props.orientation == "left"
-    ) {
-      orientation = timelineStyles.left
-    } else if (this.props.orientation == "right") {
-      orientation = timelineStyles.right
-    }
-    var dateOptions: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-    }
-    if (this.props.showDay) {
-      dateOptions = { ...dateOptions, day: "numeric" }
-    }
-    var list;
-    if (this.props.list) {
-      list = this.props.list.map((value, index) => {
-        return <li key={index}>{value}</li>;
-      });
-    }
-    return (
-      <motion.div
-        className={[timelineStyles.container, orientation].join(" ")}
-        style={{zIndex: this.props.zIndex}}
-        whileHover="hover"
-        variants={containerVariants}
-        exit="exit"
-      >
-        <div className={[timelineStyles.arrow, orientation].join(" ")} />
-        <motion.div
-          variants={bubbleVariants}
-          className={[timelineStyles.bubble, orientation].join(" ")}
-        />
-        <div className={timelineStyles.content}>
-          <div className={timelineStyles.date}>
-            <h2 className={timelineStyles.startDate}>{this.props.startDate.toLocaleDateString("en-US", dateOptions)}</h2>
-            {this.props.endDate || this.props.notEndedYet ? <div className={timelineStyles.endDateContainer}><h3 className={timelineStyles.splitter}>-</h3><h4 className={timelineStyles.endDate}>{this.props.endDate ? this.props.endDate.toLocaleDateString("en-US", dateOptions) : "Now"}</h4></div> : undefined}
-          </div>
-          <p className={timelineStyles.title}>{this.props.title}</p>
-          <div className={timelineStyles.divider}/>
-          <p>{this.props.text}</p>
-          {this.props.children}
-          {this.props.list ? <ul>{list}</ul> : undefined}
-          {this.props.usedList ? <UsedList {...this.props.usedList}/> : undefined}
-          <div className={timelineStyles.extraInfo}>
-            {this.props.location ? <div className={timelineStyles.infoContainer}><TiLocationOutline className={timelineStyles.icon}/><p>{this.props.location}</p></div> : undefined}
-            {this.props.company ? <div className={timelineStyles.infoContainer}><MdWork className={timelineStyles.icon}/><a href={this.props.company.link} target="_blank">{this.props.company.display}</a></div> : undefined}
-            {this.props.website ? <div className={timelineStyles.infoContainer}><FiGlobe className={timelineStyles.icon}/><a href={this.props.website.link} target="_blank">{this.props.website.display}</a></div> : undefined}
-          </div>
-        </div>
-      </motion.div>
-    )
+export const TimelineItem = ({orientation, showDay, list, zIndex, usedList, title, text, location, company, website, startDate, endDate, notEndedYet, children}: timelineItemProps) => {
+  const {scrollYProgress} = useViewportScroll();
+
+  scrollYProgress.onChange(x => {
+    console.log(x);
+  })
+
+  let orientationStyle;
+  if (
+    orientation === undefined ||
+    orientation == "left"
+  ) {
+    orientationStyle = timelineStyles.left
+  } else if (orientation == "right") {
+    orientationStyle = timelineStyles.right
   }
+  var dateOptions: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+  }
+  if (showDay) {
+    dateOptions = { ...dateOptions, day: "numeric" }
+  }
+  var listToHtml;
+  if (list) {
+    listToHtml = list.map((value, index) => {
+      return <li key={index}>{value}</li>;
+    });
+  }
+  return (
+  <motion.div
+    className={[timelineStyles.container, orientationStyle].join(" ")}
+    style={{zIndex: zIndex}}
+    whileHover="hover"
+    variants={containerVariants}
+    exit="exit"
+  >
+    <div className={[timelineStyles.arrow, orientationStyle].join(" ")} />
+    <motion.div
+      variants={bubbleVariants}
+      className={[timelineStyles.bubble, orientationStyle].join(" ")}
+    />
+    <div className={timelineStyles.content}>
+      <div className={timelineStyles.date}>
+        <h2 className={timelineStyles.startDate}>{startDate.toLocaleDateString("en-US", dateOptions)}</h2>
+        {endDate || notEndedYet ? <div className={timelineStyles.endDateContainer}><h3 className={timelineStyles.splitter}>-</h3><h4 className={timelineStyles.endDate}>{endDate ? endDate.toLocaleDateString("en-US", dateOptions) : "Now"}</h4></div> : undefined}
+      </div>
+      <p className={timelineStyles.title}>{title}</p>
+      <div className={timelineStyles.divider}/>
+      <p>{text}</p>
+      {children}
+      {list ? <ul>{listToHtml}</ul> : undefined}
+      {usedList ? <UsedList {...usedList}/> : undefined}
+      <div className={timelineStyles.extraInfo}>
+        {location ? <div className={timelineStyles.infoContainer}><TiLocationOutline className={timelineStyles.icon}/><p>{location}</p></div> : undefined}
+        {company ? <div className={timelineStyles.infoContainer}><MdWork className={timelineStyles.icon}/><a href={company.link} target="_blank">{company.display}</a></div> : undefined}
+        {website ? <div className={timelineStyles.infoContainer}><FiGlobe className={timelineStyles.icon}/><a href={website.link} target="_blank">{website.display}</a></div> : undefined}
+      </div>
+    </div>
+  </motion.div>)
 }
